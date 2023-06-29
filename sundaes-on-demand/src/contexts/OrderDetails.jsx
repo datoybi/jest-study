@@ -18,8 +18,8 @@ export function useOrderDetails() {
 
 export function OrderDetailsProvider(props) {
   const [optionCounts, setOptionCounts] = useState({
-    scoops: {}, // { Chocolate: 1, Vanilla: 2 }
-    toppings: {}, // { "Gummi Bears": 1}
+    scoops: {}, // example: { Chocolate: 1, Vanilla: 2 }
+    toppings: {}, // example: { "Gummi Bears": 1 }
   });
 
   function updateItemCount(itemName, newItemCount, optionType) {
@@ -31,6 +31,16 @@ export function OrderDetailsProvider(props) {
 
     // update the state with the updated copy
     setOptionCounts(newOptionCounts);
+
+    // alternate way using function argument to setOptionCounts
+    // see https://www.udemy.com/course/react-testing-library/learn/#questions/18721990/
+    // setOptionCounts((previousOptionCounts) => ({
+    //   ...previousOptionCounts,
+    //   [optionType]: {
+    //     ...previousOptionCounts[optionType],
+    //     [itemName]: newItemCount,
+    //   },
+    // }));
   }
 
   function resetOrder() {
@@ -45,7 +55,7 @@ export function OrderDetailsProvider(props) {
     // total the values in the array of counts for the number of items
     const totalCount = countsArray.reduce((total, value) => total + value, 0);
 
-    // multiply the total number of items by this item type
+    // multiply the total number of items by the price for this item type
     return totalCount * pricePerItem[optionType];
   }
 
