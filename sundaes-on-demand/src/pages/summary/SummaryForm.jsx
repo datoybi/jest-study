@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
+import axios from "axios";
 
 export default function SummaryForm({ setOrderPhase }) {
   const [tcChecked, setTcChecked] = useState(false);
@@ -22,6 +23,18 @@ export default function SummaryForm({ setOrderPhase }) {
     </span>
   );
 
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    // api 호출
+    // axios
+    //   .get(`http://localhost:3030/order`)
+    //   .then((response) => setItems(response.data))
+    //   .catch((error) => setError(true));
+
+    // abort axios call on component unmount
+    setOrderPhase("completed");
+  };
+
   return (
     <Form>
       <Form.Group controlId="terms-and-conditions">
@@ -36,7 +49,7 @@ export default function SummaryForm({ setOrderPhase }) {
         variant="primary"
         type="submit"
         disabled={!tcChecked}
-        onClick={() => setOrderPhase("completed")}
+        onClick={() => handleOnSubmit}
       >
         Confirm order
       </Button>
