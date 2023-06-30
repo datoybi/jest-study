@@ -15,7 +15,7 @@ export default function Options({ optionType }) {
 
   // optionType is 'scoops' or 'toppings
   useEffect(() => {
-    // create an abortController to attach to network request
+    // create an abortController to attach to neatwork request
     const controller = new AbortController();
     axios
       .get(`http://localhost:3030/${optionType}`, { signal: controller.signal })
@@ -28,10 +28,21 @@ export default function Options({ optionType }) {
     };
   }, [optionType]);
 
-  if (error) {
-    // @ts-ignore
-    return <AlertBanner />;
-  }
+  // useEffect(() => {
+  //   axios
+  //     .get(`http://localhost:3030/${optionType}`)
+  //     .then((response) => setItems(response.data))
+  //     .catch((error) => {
+  //       console.log(error);
+  //       setError(true);
+  //     });
+  // }, [optionType]);
+
+  // if (error) {
+  //   // @ts-ignore
+  //   console.log(error);
+  //   return <AlertBanner />;
+  // }
 
   const ItemComponent = optionType === "scoops" ? ScoopOption : ToppingOption;
   const title = optionType[0].toUpperCase() + optionType.slice(1).toLowerCase();
