@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
-import axios from "axios";
 
 export default function SummaryForm({ setOrderPhase }) {
   const [tcChecked, setTcChecked] = useState(false);
@@ -42,7 +41,7 @@ export default function SummaryForm({ setOrderPhase }) {
         variant="primary"
         type="submit"
         disabled={!tcChecked}
-        onClick={() => handleOnSubmit}
+        onClick={handleOnSubmit}
       >
         Confirm order
       </Button>
