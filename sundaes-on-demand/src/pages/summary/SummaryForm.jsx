@@ -25,13 +25,6 @@ export default function SummaryForm({ setOrderPhase }) {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    // api 호출
-    // axios
-    //   .get(`http://localhost:3030/order`)
-    //   .then((response) => setItems(response.data))
-    //   .catch((error) => setError(true));
-
-    // abort axios call on component unmount
     setOrderPhase("completed");
   };
 
