@@ -14,7 +14,7 @@ export default function Options({ optionType }) {
 
   // optionType is 'scoops' or 'toppings
   useEffect(() => {
-    // create an abortController to attach to neatwork request
+    // create an abortController to attach to network request
     const controller = new AbortController();
     axios
       .get(`http://localhost:3030/${optionType}`, { signal: controller.signal })
